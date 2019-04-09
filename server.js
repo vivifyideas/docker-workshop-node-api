@@ -10,14 +10,14 @@ app.use(bodyParser.json())
 
 app.get('/', function(req, res){
   res.send({
-    file: fs.readFileSync('message.txt', 'utf8')
+    file: fs.readFileSync('./data/message.txt', 'utf8')
   });
 });
 
 app.post('/', function(req, res){
   const text = req.body.text;
 
-  fs.writeFile('message.txt', text, 'utf8', (err) => {
+  fs.writeFile('./data/message.txt', text, 'utf8', (err) => {
     res.send({
       status: err ? 'not ok' : 'ok'
     });
