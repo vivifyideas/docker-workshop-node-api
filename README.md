@@ -29,6 +29,26 @@ curl http://127.0.0.1:3030
 # {"file":"foo bar"}
 ```
 
+- **GET /blog** - reads all documents (records) from mongodb blog post collection.
+- **POST /blog** - creates new blog document (record) from `title` and `text` body parameters (or sets default values).
+
+> Example POST request
+
+```bash
+curl -X POST \
+-H "Content-Type: application/json" \
+-d '{"text":"foo bar", "title":"foo bar"}' \
+http://127.0.0.1:3030/blog
+# {"status":"ok"}
+```
+
+> Example GET request
+
+```bash
+curl http://127.0.0.1:3030/blog
+# [ {"title": "....", "text": "...."} . . . ]
+```
+How node api connects to db
 ```
 mongoose.connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}`, {
   user: MONGO_DB_USER,
